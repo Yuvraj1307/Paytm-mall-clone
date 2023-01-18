@@ -1,0 +1,37 @@
+Nav-bar click actions id's to catch then in DOM.
+
+Nav-Bar Options 
+
+ 1. LOGO ->>>   <div id="logo"><img id="nav_img" src="navbarimg/logo.png" alt=""></div>
+
+ 2. Email Testing Dropdown btn ->>
+                                a. QA Automation btn ->>  <div id="QA_Automation">
+
+                                b. HTML Check btn    ->>  <div id="HTML_Check">
+
+                                c. Fake SMTP Server  ->>  <div id="Fake_SMTP_Server">
+
+                                d. Sandbox API       ->>  <div id="Sandbox_API">
+
+ 3. Email API ->>>  <button class="Email_API" type="button" id="dropdownMenu2">
+                     Email API
+                    </button>
+
+
+ 4. Pricing  ->>> <button class="Pricing" type="button" id="dropdownMenu2">
+                  Pricing
+                  </button>
+                
+
+ 5.Resources Dropdown btn  ->> 
+                            a. API           ->>  <div id="API">
+
+                            b. Case Studies  ->>  <div id="Case_studies">
+
+                            c. Blog          ->>  <div id="Blog">
+
+                            d. Help          ->>  <div id="Help">
+ 6.Login         ->>>    <button id="login">Log In</button>
+                            
+                        
+ 7 SignUp        ->>>    <button id="signup">Sign Up</button> 
