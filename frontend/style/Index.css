@@ -391,7 +391,7 @@ background-color: orangered;
 #Sw{
     margin-top: 10%;
 }
-#brandbody{
+/* #brandbody{
     height: auto;
     width: 100%;
      
@@ -399,14 +399,97 @@ background-color: orangered;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
-}
-/* #brandbody>div{
+} */
+#brandbody1>div{
     height: 33%;
     width: 100%;
     /* border: 1px solid red; */
-    /*display: flex;
-} */
-#brandbody>div{
+    display: flex;
+}
+#brandbody1>div>div{
+    width: 25%;
+    text-align: center;
+    transition: 1s;
+}
+#brandbody1>div>div:hover{
+    transform: scale(1.3);
+    z-index: 2;
+}
+#brandbody1>div>div>img{
+    border-radius: 50%;
+}
+#brandbody2>div{
+    height: 33%;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+}
+#brandbody2>div>div{
+    width: 25%;
+    text-align: center;
+    transition: 1s;
+}
+#brandbody2>div>div:hover{
+    transform: scale(1.3);
+    z-index: 2;
+}
+#brandbody2>div>div>img{
+    border-radius: 50%;
+}
+#brandbody3>div{
+    height: 33%;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+}
+#brandbody3>div>div{
+    width: 25%;
+    text-align: center;
+    transition: 1s;
+}
+#brandbody3>div>div:hover{
+    transform: scale(1.3);
+    z-index: 2;
+}
+#brandbody3>div>div>img{
+    border-radius: 50%;
+}
+#brandbody4>div{
+    height: 33%;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+}
+#brandbody4>div>div{
+    width: 25%;
+    text-align: center;
+    transition: 1s;
+}
+#brandbody4>div>div:hover{
+    transform: scale(1.3);
+    z-index: 2;
+}
+
+#brandbody4>div>div>img{
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #brandbody>div{
    height: auto; 
     width: 100%;
    
@@ -417,7 +500,7 @@ background-color: orangered;
     border-radius: 50%;
     width: 70%;
     margin-bottom: 5%;
-}
+} */
 
 
 
@@ -434,12 +517,12 @@ background-color: orangered;
     display: flex;
     justify-content: space-evenly;
 }
-.swiper-slide>div{
+#imgs>div{
     width: 25%;
     text-align: center;
     transition: 1s;
 }
-.swiper-slide>div:hover{
+#imgs>div:hover{
     transform: scale(1.3);
     z-index: 2;
 }
