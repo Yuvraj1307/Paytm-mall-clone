@@ -3,6 +3,7 @@ const {connection}=require("./config/db")
 const {userRouter}=require("./routs/usersrout")
 const {authforuser}=require("./moddleware/authforuser")
 const {brandmodel}=require("./models/brandmodel")
+const {prodmodel}=require("./models/cartmodel")
 const cors=require("cors")
 const app=express()
 app.use(cors({origin:"*"}))
@@ -18,8 +19,21 @@ app.get("/",async (req,res)=>{
     
 })
 
+
 //app.use(authforuser)
 app.use("/user",userRouter)
+
+app.post("/addtocart",async (req,res)=>{
+  let data=req.body
+  try{
+    let crt=await prodmodel.insertMany(data)
+    res.send(crt)
+    console.log(crt)
+  }catch(err){
+       res.send("can't add item to cart")
+       console.log(err)
+  }
+})
 
 app.post("/brand",async (req,res)=>{
   try{
