@@ -309,7 +309,7 @@
         </div>
     </div>
     <div id="select">
-        <select onchange="sort()" name="" id="opt">
+        <select onchange="sortdata()"  name="" id="opt">
             <option value="high to low">high to low</option>
             <option value="low to high">low to high</option>
          </select>
@@ -393,7 +393,7 @@
         });
 
 
-
+        //onchange="sortdata()"
 
 
 
@@ -425,63 +425,24 @@
 
 
 
-        let dataArray=[{img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:1000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:2000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:3000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:4000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:5000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:10000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:15000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:20000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:30000},
-        {img:"https://assetscdn1.paytm.com/images/catalog/product/D/DE/DEAVOUCHER-WORTAT-H11073186B5C18C7/4.png?imwidth=282&impolicy=hq",price:40000} ]   
-        let app=document.getElementById("app")
+
+        async function feTchdata(){
+           try{
+               let data=await fetch("http://localhost:8080/user/products")
+               let dataArray=await data.json()
+            
+            renderdata(dataArray)
+          
+           }catch(err){
+                 alert("can't get data")
+                 console.log(err)
+           }
+        }
+       
         
-       function sort(){
-        let option=document.querySelector("#opt").value
-        if(option=="high to low"){
-            app.innerHTML=""
-            dataArray.sort((a,b)=>{return b.price-a.price})
-            let dsc=dataArray
-            
-            
-        for(let data of dataArray){
-          let col=document.createElement("div")
-          let img=document.createElement("img")
-               img.src=data.img
-               
-          let H3=document.createElement("h3")
-          H3.innerText=data.price
-          col.append(img,H3)
-          app.append(col)
-        }
-        }else if(option=="low to high"){
-            app.innerHTML=""
-            dataArray.sort((a,b)=>{return a.price-b.price})
-            let dsc=dataArray
-            
-            
-        for(let data of dataArray){
-          let col=document.createElement("div")
-          let img=document.createElement("img")
-               img.src=data.img
-               
-          let H3=document.createElement("h3")
-          H3.innerText=data.price
-          col.append(img,H3)
-          app.append(col)
-        }
-        }
-       
-       
-       }
-       
-// function range(){
+        let app=document.getElementById("app")
 
-// }
-
-
-       
+        function renderdata(dataArray){
        for(let data of dataArray){
           let col=document.createElement("div")
           let img=document.createElement("img")
@@ -489,9 +450,126 @@
                
           let H3=document.createElement("h3")
           H3.innerText=data.price
-          col.append(img,H3)
+          let btn=document.createElement("button")
+          btn.innerText="add to cart"
+         btn.addEventListener("click",(event)=>{
+                event.preventDefault()
+            addtocart(data)
+             
+         })
+          col.append(img,H3,btn)
           app.append(col)
         }
        
+    }
+    feTchdata()
+
+
+
+   async function sortdata(){
+    let option=document.querySelector("#opt").value
+    app.innerHTML=""
+    if(option=="high to low"){
+
+           try{
+            let data=await fetch("http://localhost:8080/user/dscprod")
+            let dataArray=await data.json()
+            for(let data of dataArray){
+          let col=document.createElement("div")
+          let img=document.createElement("img")
+               img.src=data.img
+               
+          let H3=document.createElement("h3")
+          H3.innerText=data.price
+          let btn=document.createElement("button")
+          btn.innerText="add to cart"
+         btn.addEventListener("click",(event)=>{
+                event.preventDefault()
+            addtocart(data)
+             
+         })
+          col.append(img,H3,btn)
+          app.append(col)
+        }
+            console.log(dataArray)
+           }catch(err){
+            alert("can't sort data")
+            console.log(err)
+           }
+
+
+    }else{
+
+        try{
+            let data=await fetch("http://localhost:8080/user/ascprod")
+            let dataArray=await data.json()
+
+            for(let data of dataArray){
+          let col=document.createElement("div")
+          let img=document.createElement("img")
+               img.src=data.img
+               
+          let H3=document.createElement("h3")
+          H3.innerText=data.price
+          let btn=document.createElement("button")
+          btn.innerText="add to cart"
+         btn.addEventListener("click",(event)=>{
+                event.preventDefault()
+            addtocart(data)
+             
+         })
+          col.append(img,H3,btn)
+          app.append(col)
+        }
+            console.log(dataArray)
+           }catch(err){
+            alert("can't sort data")
+            console.log(err)
+           }
+    }
+    console.log(option)
+   }
+    
+    
+      
+
+ 
+     async function addtocart(data){
+        try{
+         let data1=await fetch("http://localhost:8080/user/cart",{
+            method:"GET",
+         })
+        let arr=await data1.json()
+         
+        let arr2=arr.filter((el)=>{
+            return data._id==el.id
+        })
+          
+        if(arr2.length!=0){
+           alert("product is already exist")
+        }else{
+            
+            let img=data.img,price=data.price,id=data._id
+            
+            let obj={img,price,id}
+            console.log(obj)
+            let data2=await fetch("http://localhost:8080/user/addcart",{
+            method:"POST",
+            body:JSON.stringify(obj),
+            headers:{"Content-type":"application/json"}
+         })
+         alert("product is added to cart")
+        console.log(data2.json())
+         }
         
+
+
+        }catch(err){
+            alert("can't find data")
+            console.log(err)
+        }
+
+     }
+
+     
         </script>
