@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/userprofile.css">
+<link rel="stylesheet" href="../style/Index.css">
+<link rel="stylesheet" href="../style/producs.css">
+    <script src="https://kit.fontawesome.com/6614217c3b.js" crossorigin="anonymous"></script>
+    <!-- <link rel="icon" type="image/x-icon" href=""> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+   
+
+
+    <style>
+        #cont{
+            height: 1000px;
+            width:100% ;
+          
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(4,1fr);
+        }
+        #cont>div{
+            border: 1px solid red;
+            width: 300px;
+            height: 350px;
+            text-align: center;
+        }
+        #cont>div>img{
+            width: 80%;
+        }
+        /* #appendtobe{
+            height: 700px;
+            width:100% ;
+            display: grid;
+            border: 1px solid blue;
+            grid-template-columns: repeat(4,1fr);
+        } */
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="nav nav-tabs sperateit" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">add product</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">delete product</button>
+        </li>
+      </ul>
+      <div  class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+           <div id="appenduserdet">
+         <div id="userstatic">
+            <br>
+            <div><img id="userimagechange" width="200px" height="200px" src="" alt=""></div>
+            <div id="name_mail">
+                <div><h4 id="usernamechange"></h4></div>
+                <div><h5 id="usermailchange"></h5></div>
+            </div>
+         </div>
+         <br>
+         <div><h2>Account Settings</h2></div>
+         <br>
+         <div id="inputtags">
+            <div><input id="addprod" class="img" type="text" placeholder="image"></div>
+            <br>
+            <div><input id="addprod" class="price" type="text" placeholder="Update Mail"></div>
+            <br>
+            <div id="update_btn"><button id="btn1">add product</button></div>
+            <br>
+             
+            <div id="alerthere"></div>
+            <br>
+            <br>
+            <br>
+         </div>
+        </div>
+        </div>
+   
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div id="appendtobe">
+                 
+                 
+                <div id="cont"></div>
+                     
+                    
+                        
+            </div>
+
+        </div>
+        
+      </div>
+</body>
+</html>
+<script src="scripts/userprofile.js"></script>
+<script>
+    let btn=document.getElementById("btn1")
+btn.addEventListener("click",(event)=>{
+    event.preventDefault()
+    let details=document.querySelectorAll("#addprod")
+    let obj={}
+    for(let user of details){
+        obj[user.className]=user.value
+    }
+    console.log(obj)
+    addprod(obj)
+})
+async function addprod(obj){
+    try{
+        let regreq=await fetch("http://localhost:8080/admin/products/add",{
+            method:"POST",
+            body:JSON.stringify(obj),
+            headers:{"Content-type":"application/json"}
+        })
+        if(regreq.ok==true){
+            alert("New product added")
+            
+        }else{
+            alert("something went wrong")
+
+        }
+        //console.log(regreq)
+      }catch(err){
+        alert("bad request")
+        console.log("bad request")
+           console.log(err)
+      }
+}
+
+
+async function dlttocart(data){
+        let obj={id:data._id}
+        console.log(obj)
+        try{
+              let data=await fetch("http://localhost:8080/admin/products/delete",{
+                method:"DELETE",
+                body:JSON.stringify(obj),
+                headers:{
+                    "Content-type":"application/json",
+                    Authorization:`${sessionStorage.getItem("token")}`
+                }
+              })
+            //   window.location.href="./admin.html"
+        }catch(err){
+             console.log(err)
+        }
+     }
+
+
+    
+            
+    async function feTchdata(){
+           try{
+               let data=await fetch("http://localhost:8080/admin/products",{
+                method:"GET",
+                headers:{
+                    "Content-type":"application/json"
+                     
+                }
+               })
+               let dataArray=await data.json()
+            
+            renderdata(dataArray)
+          
+           }catch(err){
+                 alert("can't get data")
+                 console.log(err)
+           }
+        }
+       
+       
+        
+        let app=document.getElementById("cont")
+
+        function renderdata(dataArray){
+       for(let data of dataArray){
+          let col=document.createElement("div")
+          let img=document.createElement("img")
+               img.src=data.img
+               
+          let H3=document.createElement("h3")
+          H3.innerText=data.price
+          let btn=document.createElement("button")
+          btn.innerText="remove"
+          
+           
+          
+         btn.addEventListener("click",(event)=>{
+                // event.preventDefault()
+            dlttocart(data)
+             
+         })
+
+        //  btn2.addEventListener("click",(event)=>{
+        //         event.preventDefault()
+        //     addtocart(data)
+             
+        //  })
+          col.append(img,H3,btn)
+          app.append(col)
+        }
+       
+    }
+    feTchdata()
+ 
+       
+        
+    
+             
+</script>

@@ -101,6 +101,10 @@ color: #202c45;;
     display: flex;
     justify-content: space-evenly;
 }
+
+
+
+
 /* #login{
     padding: 6px 20px 6px 20px;
     background-color: white;
@@ -395,7 +399,7 @@ background-color: orangered;
 
 /* brand section */
 #Sw{
-    margin-top: 10%;
+    margin-top: 12%;
 }
 /* #brandbody{
     height: auto;
@@ -410,73 +414,80 @@ background-color: orangered;
     height: 33%;
     width: 100%;
     /* border: 1px solid red; */
-    display: flex;
+    /* display: flex; */
 }
 #brandbody1>div>div{
+    display: flex;
+}
+#brandbody1>div>div>div{
     width: 25%;
     text-align: center;
     transition: 1s;
+  
 }
-#brandbody1>div>div:hover{
+#brandbody1>div>div>div:hover{
     transform: scale(1.3);
     z-index: 2;
 }
-#brandbody1>div>div>img{
+#brandbody1>div>div>div>img{
     border-radius: 50%;
 }
 #brandbody2>div{
     height: 33%;
     width: 100%;
     /* border: 1px solid red; */
-    display: flex;
+  
 }
-#brandbody2>div>div{
+#brandbody2>div>div{display: flex;}
+#brandbody2>div>div>div{
     width: 25%;
     text-align: center;
     transition: 1s;
 }
-#brandbody2>div>div:hover{
+#brandbody2>div>div>div:hover{
     transform: scale(1.3);
     z-index: 2;
 }
-#brandbody2>div>div>img{
+#brandbody2>div>div>div>img{
     border-radius: 50%;
 }
 #brandbody3>div{
     height: 33%;
     width: 100%;
     /* border: 1px solid red; */
-    display: flex;
+  
 }
-#brandbody3>div>div{
+#brandbody3>div>div{  display: flex;}
+#brandbody3>div>div>div{
     width: 25%;
     text-align: center;
     transition: 1s;
 }
-#brandbody3>div>div:hover{
+#brandbody3>div>div>div:hover{
     transform: scale(1.3);
     z-index: 2;
 }
-#brandbody3>div>div>img{
+#brandbody3>div>div>div>img{
     border-radius: 50%;
 }
 #brandbody4>div{
     height: 33%;
     width: 100%;
     /* border: 1px solid red; */
-    display: flex;
+  
 }
-#brandbody4>div>div{
+#brandbody4>div>div{  display: flex;}
+#brandbody4>div>div>div{
     width: 25%;
     text-align: center;
     transition: 1s;
 }
-#brandbody4>div>div:hover{
+#brandbody4>div>div>div:hover{
     transform: scale(1.3);
     z-index: 2;
 }
 
-#brandbody4>div>div>img{
+#brandbody4>div>div>div>img{
     border-radius: 50%;
 }
 
@@ -539,10 +550,11 @@ background-color: orangered;
     height: auto;
     display: grid;
     grid-template-columns: repeat(4,1fr);
+    
 }
 #items>div{
     text-align: center;
-}
+    background-color: white; }
 #items>div>button{
     border: 0px;
     background-color: rgb(255, 133, 88);
@@ -556,3 +568,35 @@ background-color: orangered;
 }
 
  
+
+/* details sec */
+#det{
+    margin-top: 4%;
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+
+/* footer sectiion */
+
+#footer{
+    width: 100%;
+    /* border: 1px solid red; */
+    height: 300px;
+    margin-top: 5%;
+    background-color: white;
+   
+}
+#footer>div:nth-child(1){
+    height:20%;
+}
+#footer>div:nth-child(2){
+    width: 100%;
+    height:80%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+/* #footer>div:nth-child(2)>div{
+    border: 1px solid blue; 
+} */

@@ -11,17 +11,52 @@
     <div id="pay">
          <div>
             <span>name : </span>
-            <input type="text"></div>
+            <input class="name" type="text"></div>
          <div>
             <span>card no. :</span>
-            <input type="text"></div>
+            <input class="number" type="number"></div>
          <div>
             <span>cvv :</span>
-            <input type="text"></div>
+            <input class="cvv" type="number"></div>
          <div>
             <span>exp. date :</span>
-            <input type="text"></div>
+            <input class="valid" type="text"></div>
             <div><button>Make payment</button></div>
     </div>
 </body>
 </html>
+<script>
+
+   let btn=document.querySelector("#pay>div>button")
+   btn.addEventListener("click",(event)=>{
+         event.preventDefault()
+         let DIV=document.querySelectorAll("#pay>div>input")
+         let obj={}
+          for(let data of DIV){
+            obj[data.className]=data.value
+            
+          }
+          validation(obj)
+console.log(obj)
+  
+        
+   })
+
+   function validation(obj){
+      if(obj["number"].length!=16||obj["cvv"].length!=3||obj["valid"].length!=5){
+         alert("invalid details")
+      }else if(obj["name"]==""||obj["number"]==""||obj["cvv"]==""||obj["valid"]==""){
+         alert ("please fill all details")
+      }else if(obj["valid"][2]!="/"){
+         alert("invalid date formate")
+      }else{
+         
+         let DIV=document.querySelector("body")
+         DIV.innerHTML=""
+         DIV.innerHTML="<h1>Payment successful</h1>"
+         setTimeout(()=>{ window.location.href="./index.html"},3000)
+        
+      }
+   }
+   
+</script>

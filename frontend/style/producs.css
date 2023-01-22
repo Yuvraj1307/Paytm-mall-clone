@@ -1,11 +1,24 @@
+#atag{
+   text-decoration: none;
+   font-weight: bolder;
+   color: black;
+}
 body{
     background-color: rgb(232, 232, 232);
 }
 #select{
-    margin-top: 17%;
+    margin-top: 11%;
+    padding-left: 3%;
+    background-color: rgb(242, 242, 242);
+}
+#select>select{
+   border-color: grey;
+   width: 200px;
+   text-align: center;
+   background-color: rgb(242, 242, 242);
 }
 #container{
-    margin-top: 10%;
+    
     width: 100%;
     height: auto;
     background-color: rgb(242, 242, 242);
@@ -32,15 +45,22 @@ padding-top: 5%;
     width: 67%;
     height: 100%;
     /* border: 1px solid blue; */
-    background-color: white;
+    background-color: rgb(242, 242, 242);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     /* margin-left: 3%; */
     text-align: center;
 }
+#container>div:nth-child(2)>div{background-color: white;
+padding-bottom: 7%;}
 #container>div:nth-child(2)>div>img{
    width: 80%;
+}
+#container>div:nth-child(2)>div>button{
+   border: 0px;
+   border-radius: 5px;
+   padding: 7px 20px;
 }
  
  /* .wrapper{

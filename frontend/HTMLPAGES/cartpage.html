@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+   
     <link  rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="../style/Index.css">
     <!-- <link rel="stylesheet" href="styles/footer.css">   -->
@@ -17,7 +17,7 @@
       <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> 
     <title>Document</title>
 </head>
-<body>
+<body id="body">
     <!-- nav bar start -->
     <div class="fixed-top" id="nav_body">
         <!-- nav bar starts from here -->
@@ -312,28 +312,57 @@
 
 
     </div>
+
+
+
+    <div id="footer">
+        <div><h4>From Electronics, Fashion to Cars: Buy Everything Online from the Convenience of Your Home from Paytm Mall</h4></div>
+        <div>
+            <div><h5>Electronics</h5></div>
+            <div><h5>Mobiles</h5></div>
+            <div><h5>Car & bike</h5></div>
+            <div><h5>Super Market</h5></div>
+            <div><h5>Women's Fashion</h5></div>
+            <div><h5>Men's Fashion</h5></div>
+            <div><h5>Home & Kitchen</h5></div>
+            <div><h5>Baby, Kids & Toys</h5></div>
+            <div><h5>Car & Bike Accessories</h5></div>
+            <div><h5>Sports & Fitness</h5></div>
+            <div><h5>Stationery</h5></div>
+            <div><h5>Travel Cards</h5></div>
+        </div>
+  </div> 
     
 </body>
 </html>
 <script>
 
-// async function dlttocart(data){
-//         let obj={id:data.id}
-//         // console.log(data.id)
-//         try{
-//               let data=await fetch("http://localhost:8080/user/cart/delete",{
-//                 method:"DELETE",
-//                 body:JSON.stringify(obj),
-//                 headers:{"Content-type":"application/json"}
-//               })
-
-//         }catch(err){
-
-//         }
-//     }
+async function dlttocart(data){
+        let obj={id:data.id}
+        console.log(data.id)
+        try{
+              let data=await fetch("http://localhost:8080/user/cart/delete",{
+                method:"DELETE",
+                body:JSON.stringify(obj),
+                headers:{
+                    "Content-type":"application/json",
+                    Authorization:`${sessionStorage.getItem("token")}`
+                }
+              })
+              window.location.href="./cartpage.html"
+        }catch(err){
+             console.log(err)
+        }
+    }
      async function feTchdata(){
            try{
-               let data=await fetch("http://localhost:8080/user/cart")
+               let data=await fetch("http://localhost:8080/user/cart",{
+                method:"GET",
+                headers:{
+                    "Content-type":"application/json",
+                    Authorization:`${sessionStorage.getItem("token")}`
+                }
+               })
                let dataArray=await data.json()
             
             renderdata(dataArray)
@@ -361,7 +390,7 @@
            
           btn2.innerHTML=`<a href="/frontend/HTMLPAGES/payment.html">Buy now</a>`
          btn.addEventListener("click",(event)=>{
-                event.preventDefault()
+                // event.preventDefault()
             dlttocart(data)
              
          })

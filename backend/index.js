@@ -4,6 +4,7 @@ const {userRouter}=require("./routs/usersrout")
 const {authforuser}=require("./moddleware/authforuser")
 const {brandmodel}=require("./models/brandmodel")
 const {prodmodel}=require("./models/cartmodel")
+const {adminRouter}=require("./routs/adminrouts")
 const cors=require("cors")
 const app=express()
 app.use(cors({origin:"*"}))
@@ -18,9 +19,9 @@ app.get("/",async (req,res)=>{
   }
     
 })
+app.use("/admin",adminRouter)
 
-
-//app.use(authforuser)
+app.use(authforuser)
 app.use("/user",userRouter)
 
 app.post("/addtocart",async (req,res)=>{

@@ -62,17 +62,34 @@ userRouter.post("/login",async (req,res)=>{
 
 userRouter.get("/products",async(req,res)=>{
 
+ 
+    
+    
+ 
+
+      
     try{
         let data=await prodmodel.find()
         res.send(data)
+    
     }catch(err){
            res.send("can't find data")
+          
            console.log(err)
     }
+       
+
+
+   
 })
 
 userRouter.get("/dscprod",async(req,res)=>{
+
+
     
+    
+          
+        
     try{
         let data=await prodmodel.find().sort({price:-1})
         res.send(data)
@@ -80,56 +97,85 @@ userRouter.get("/dscprod",async(req,res)=>{
            res.send("can't find data")
            console.log(err)
     }
+    
+ 
+ 
 })
 userRouter.get("/ascprod",async(req,res)=>{
     
-    try{
-        let data=await prodmodel.find().sort({price:1})
-        res.send(data)
-    }catch(err){
-           res.send("can't find data")
-           console.log(err)
-    }
+
+ 
+    
+          
+            try{
+                let data=await prodmodel.find().sort({price:1})
+                res.send(data)
+            }catch(err){
+                   res.send("can't find data")
+                   console.log(err)
+            }
+           
+    
+    
+   
 })
 
 userRouter.post("/addcart",async (req,res)=>{
+
+
+
     let data=req.body
-    try{
-        let cart=await cartmodel.insertMany(data)
-        console.log(cart)
-        res.send(cart)
-    }catch(err){
-        res.send("can't add item to cart")
-    }
+
+  
+          
+            try{
+                let cart=await cartmodel.insertMany(data)
+                // console.log(cart)
+                res.send(cart)
+            }catch(err){
+                res.send("can't add item to cart")
+            }
+  
+  
+ 
 })
 userRouter.get("/cart",async (req,res)=>{
+
+
+
+    
+ 
+    
+            try{
+                let cart=await cartmodel.find()
+                // console.log(cart)
+                res.send(cart)
+            }catch(err){
+                res.send("can't add item to cart")
+            }
    
-    try{
-        let cart=await cartmodel.find()
-        console.log(cart)
-        res.send(cart)
-    }catch(err){
-        res.send("can't add item to cart")
-    }
+   
+  
 })
 userRouter.delete("/cart/delete",async (req,res)=>{
    let id=req.body.id
-   res.send(id)
-//    console.log(req.body)
-    try{
-        let cart=await cartmodel.findByIdAndDelete({id:id})
-        console.log(cart)
-        res.send(cart)
-    }catch(err){
-        res.send("can't add item to cart")
-    }
+ 
+
+   
+ 
+   
+        try{
+            let cart=await cartmodel.findOneAndRemove({id:id})
+            console.log(cart)
+            res.send(cart)
+        }catch(err){
+            res.send("can't add item to cart")
+        }
+          
+ 
+
 })
-// userRouter.patch("/update/:id",async (req,res)=>{
-//     let data=req.body
-//     try{
-//         let user=await usermodel.find({})
-//     }catch(err){}
-// })
+ 
 
 module.exports={userRouter}
 
