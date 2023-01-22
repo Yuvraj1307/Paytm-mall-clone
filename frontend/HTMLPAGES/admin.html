@@ -112,7 +112,7 @@ btn.addEventListener("click",(event)=>{
 })
 async function addprod(obj){
     try{
-        let regreq=await fetch("http://localhost:8080/admin/products/add",{
+        let regreq=await fetch("https://kind-pear-bear-garb.cyclic.app/admin/products/add",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{"Content-type":"application/json"}
@@ -137,7 +137,7 @@ async function dlttocart(data){
         let obj={id:data._id}
         console.log(obj)
         try{
-              let data=await fetch("http://localhost:8080/admin/products/delete",{
+              let data=await fetch("https://kind-pear-bear-garb.cyclic.app/admin/products/delete",{
                 method:"DELETE",
                 body:JSON.stringify(obj),
                 headers:{
@@ -156,7 +156,7 @@ async function dlttocart(data){
             
     async function feTchdata(){
            try{
-               let data=await fetch("http://localhost:8080/admin/products",{
+               let data=await fetch("https://kind-pear-bear-garb.cyclic.app/admin/products",{
                 method:"GET",
                 headers:{
                     "Content-type":"application/json"

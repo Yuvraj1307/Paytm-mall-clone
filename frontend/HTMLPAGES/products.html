@@ -24,7 +24,7 @@
         <!-- nav bar starts from here -->
         <div class="sticky-top" id="nav">
             <div>
-                <div id="logo"><a id="changelocation" href="index.html"><img id="nav_img" src="../optional/nav-bar/navbarimg/logo.jpeg" alt=""></a></div>
+                <div id="logo"><a id="changelocation" href="../index.html"><img id="nav_img" src="../optional/nav-bar/navbarimg/logo.jpeg" alt=""></a></div>
             </div>
             <!-- Logo has been attached -->
             <!-- first dropdown box starts  first menu option-->
@@ -429,7 +429,7 @@
 
         async function feTchdata(){
            try{
-               let data=await fetch("http://localhost:8080/user/products",{
+               let data=await fetch("https://kind-pear-bear-garb.cyclic.app/user/products",{
                 method:"GET",
                 headers:{
                     "Content-type":"application/json",
@@ -479,7 +479,7 @@
     if(option=="high to low"){
 
            try{
-            let data=await fetch("http://localhost:8080/user/dscprod",{
+            let data=await fetch("https://kind-pear-bear-garb.cyclic.app/user/dscprod",{
                 method:"GET",
                 headers:{
                     "Content-type":"application/json",
@@ -513,7 +513,7 @@
     }else{
 
         try{
-            let data=await fetch("http://localhost:8080/user/ascprod",{
+            let data=await fetch("https://kind-pear-bear-garb.cyclic.app/user/ascprod",{
                 method:"GET",
                 headers:{
                     "Content-type":"application/json",
@@ -555,7 +555,7 @@
  
      async function addtocart(data){
         try{
-         let data1=await fetch("http://localhost:8080/user/cart",{
+         let data1=await fetch("https://kind-pear-bear-garb.cyclic.app/user/cart",{
             method:"GET",
             headers:{
                     "Content-type":"application/json",
@@ -576,7 +576,7 @@
             
             let obj={img,price,id}
             console.log(obj)
-            let data2=await fetch("http://localhost:8080/user/addcart",{
+            let data2=await fetch("https://kind-pear-bear-garb.cyclic.app/user/addcart",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{

@@ -23,7 +23,7 @@
         <!-- nav bar starts from here -->
         <div class="sticky-top" id="nav">
             <div>
-                <div id="logo"><a id="changelocation" href="index.html"><img id="nav_img" src="../optional/nav-bar/navbarimg/logo.jpeg" alt=""></a></div>
+                <div id="logo"><a id="changelocation" href="../index.html"><img id="nav_img" src="../optional/nav-bar/navbarimg/logo.jpeg" alt=""></a></div>
             </div>
             <!-- Logo has been attached -->
             <!-- first dropdown box starts  first menu option-->
@@ -356,7 +356,7 @@ async function dlttocart(data){
     }
      async function feTchdata(){
            try{
-               let data=await fetch("http://localhost:8080/user/cart",{
+               let data=await fetch("https://kind-pear-bear-garb.cyclic.app/user/cart",{
                 method:"GET",
                 headers:{
                     "Content-type":"application/json",

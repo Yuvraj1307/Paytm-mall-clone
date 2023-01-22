@@ -12,7 +12,7 @@ btn.addEventListener("click",(event)=>{
  
 async function adduser(obj){
       try{
-        let regreq=await fetch("http://localhost:8080/user/create",{
+        let regreq=await fetch("https://kind-pear-bear-garb.cyclic.app/user/create",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{"Content-type":"application/json"}

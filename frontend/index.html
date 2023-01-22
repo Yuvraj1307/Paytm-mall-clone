@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link  rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="../style/Index.css">
+    <link rel="stylesheet" href="./style/Index.css">
     <!-- <link rel="stylesheet" href="styles/footer.css">   -->
      <script src="https://kit.fontawesome.com/6614217c3b.js" crossorigin="anonymous"></script>
      <link rel="icon" type="image/x-icon" href="">
@@ -22,7 +22,7 @@
         <!-- nav bar starts from here -->
         <div class="sticky-top" id="nav">
             <div>
-                <div id="logo"><a id="changelocation" href="index.html"><img id="nav_img" src="../optional/nav-bar/navbarimg/logo.jpeg" alt=""></a></div>
+                <div id="logo"><a id="changelocation" href="index.html"><img id="nav_img" src="./optional/nav-bar/navbarimg/logo.jpeg" alt=""></a></div>
             </div>
             <!-- Logo has been attached -->
             <!-- first dropdown box starts  first menu option-->
@@ -101,7 +101,7 @@
                 <!-- fourth option in nav-bar startyin -->
                 <div class="dropdown">
                     <button  type="button" id="dropdownMenu2">
-                        <a id="cart"href="./cartpage.html"> cart items</a>
+                        <a id="cart"href="./HTMLPAGES/cartpage.html"> cart items</a>
                     </button>
                       
                          
@@ -111,18 +111,18 @@
                 <div id="user-signup">
                     <!-- login button starts -->
                     <div>
-                        <button id="login"><a href="../HTMLPAGES/login.html">Log In</a></button>
+                        <button id="login"><a href="./HTMLPAGES/login.html">Log In</a></button>
                     </div>
                     <!-- login buttion ends -->
 
                     <!--  signup button starts-->
                     <div>
-                        <button id="signup"><a href="../HTMLPAGES/signup.html">Sign Up</a></button>
+                        <button id="signup"><a href="./HTMLPAGES/signup.html">Sign Up</a></button>
                     </div>
                     <!-- signup button ends -->
                     <!-- Admin button starts-->
                     <div>
-                        <button id="signup"><a href="adminlogin.html">Admin</a></button>
+                        <button id="signup"><a href="./HTMLPAGES/adminlogin.html">Admin</a></button>
                     </div>
                     <!-- Admin button ends -->
                 </div>
@@ -361,7 +361,7 @@
     <div class="swiper">
      <h1>Grocery & Home Furnishing</h1>
         <div class="swiper-wrapper">
-            <div id="imgs"class="swiper-slide"><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498479/1613247367528.png?imwidth=414&impolicy=hq"/><h3>Big Bazaar</h3></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498482/1620737072141.png?imwidth=414&impolicy=hq"/><h3>Urban Ladder</h3></div><div><a href="./products.html"><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498480/1620737097910.jpg?imwidth=414&impolicy=hq"/><h3>@home</h3></a></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498484/1610566898069.jpg?imwidth=414&impolicy=hq"/><h3>More</h3></div></div>
+            <div id="imgs"class="swiper-slide"><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498479/1613247367528.png?imwidth=414&impolicy=hq"/><h3>Big Bazaar</h3></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498482/1620737072141.png?imwidth=414&impolicy=hq"/><h3>Urban Ladder</h3></div><div><a href="./HTMLPAGES/products.html"><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498480/1620737097910.jpg?imwidth=414&impolicy=hq"/><h3>@home</h3></a></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498484/1610566898069.jpg?imwidth=414&impolicy=hq"/><h3>More</h3></div></div>
             <div id="imgs"class="swiper-slide"><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498484/1610566898069.jpg?imwidth=414&impolicy=hq"/><h3>More</h3></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498485/1620737113562.png?imwidth=414&impolicy=hq"/><h3>Homecentre</h3></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498490/1610567023040.png?imwidth=414&impolicy=hq"/><h3>Prestige</h3></div><div><img width="80%"src="https://assetscdn1.paytm.com/images/catalog/view_item/498486/1610567208285.png?imwidth=414&impolicy=hq"/><h3>Ratnadeep</h3></div></div>
            
         </div>
@@ -462,7 +462,7 @@
 <script>
        async function fetchData(){
         try{
-           let fetchdata=await fetch("http://localhost:8080/")
+           let fetchdata=await fetch("https://kind-pear-bear-garb.cyclic.app/")
            if(fetchdata.ok==true){
             let data=await fetchdata.json()
             renderData(data)

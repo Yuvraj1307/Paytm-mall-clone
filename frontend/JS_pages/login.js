@@ -12,7 +12,7 @@ btn.addEventListener("click",(event)=>{
 
 async function loginuser(obj){
      try{
-        let loginreq=await fetch("http://localhost:8080/user/login",{
+        let loginreq=await fetch("https://kind-pear-bear-garb.cyclic.app/user/login",{
             method:"POST",
             body:JSON.stringify(obj),
             headers:{"Content-type":"application/json"}
@@ -21,7 +21,7 @@ async function loginuser(obj){
             let token=await loginreq.json()
             sessionStorage.setItem("token",token.token)
             alert("login successful")
-            window.location.href="../HTMLPAGES/index.html"
+            window.location.href="../index.html"
             //console.log(token)
         }
         console.log(loginreq)
